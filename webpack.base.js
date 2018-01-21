@@ -1,16 +1,4 @@
-const path = require('path');
-const webpackMerge = require('webpack-merge');
-
-const baseConfig = require('./webpack.base');
-
-const config = {
-    target: 'node',
-    entry: './src/index.js',
-    output: {
-        filename: 'bundle.js',
-        path: path.resolve(__dirname, 'build')
-    },
-
+module.exports = {
     module: {
         rules: [
             {
@@ -28,5 +16,3 @@ const config = {
         ]
     }
 };
-
-module.exports = webpackMerge(baseConfig, config);
