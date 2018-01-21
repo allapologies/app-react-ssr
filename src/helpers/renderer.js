@@ -1,10 +1,14 @@
 import React from 'react';
-import { renderToString } from 'react-dom/server'
+import { renderToString } from 'react-dom/server';
+import { StaticRouter } from 'react-router-dom';
+import { Routes } from '../client/routes'
 
-import Home from '../client/components/home'
-
-const renderer = () => {
-    const content = renderToString(<Home />);
+const renderer = (req) => {
+    const content = renderToString(
+        <StaticRouter context={{}} location={req.path}>
+           <Routes />
+        </StaticRouter>
+    );
 
     return `
         <html>
@@ -16,7 +20,5 @@ const renderer = () => {
        </html>
     `;
 };
-
-renderToString(<Home/>);
 
 module.exports = renderer;
