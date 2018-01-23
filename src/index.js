@@ -14,9 +14,11 @@ const PORT = 3000;
 
 app.get('*', (req, res) => {
     const store = createStore();
-    matchRoutes(routes, req.path).map(({ route }) => {
-        return route.loadData ? route.loadData() : null;
+    const promises = matchRoutes(routes, req.path).map(({ route }) => {
+        return route.loadData ? route.loadData(store) : null;
     });
+
+    console.log(promises);
 
     res.send(renderer(req, store));
 });
