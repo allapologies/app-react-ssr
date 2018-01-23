@@ -8,7 +8,7 @@ app.use(express.static('public'));
 
 const PORT = 3000;
 
-app.get('/', (req, res) => res.send(renderer(req)));
+app.get('*', (req, res) => res.send(renderer(req)));
 
 app.listen(PORT, (req, res) => {
     console.log(`Listening on port ${PORT}`)
