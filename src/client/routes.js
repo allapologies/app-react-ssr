@@ -1,16 +1,17 @@
 import React from 'react';
-import Home from './components/home'
-import UsersList, { loadData } from './components/users-list';
+
+import HomePage from './pages/home-page';
+import UsersListPage, { loadData } from './pages/users-list-page';
 
 export const routes = [
     {
         path: '/',
-        component: Home,
+        component: HomePage,
         exact: true
     },
     {
         loadData,
         path: '/users',
-        component: UsersList,
+        component: UsersListPage,
     }
 ];
