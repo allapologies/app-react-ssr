@@ -6,10 +6,10 @@ import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 import { routes } from '../client/routes'
 
-const renderer = (req, store) => {
+const renderer = (req, store, context) => {
     const content = renderToString(
         <Provider store={store}>
-            <StaticRouter context={{}} location={req.path}>
+            <StaticRouter context={context} location={req.path}>
                 <div>{renderRoutes(routes)}</div>
             </StaticRouter>
         </Provider>
